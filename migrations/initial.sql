@@ -30,3 +30,5 @@ CREATE TABLE Repair (
     detail_number INTEGER NOT NULL,
     price INTEGER NOT NULL
 );
+
+
