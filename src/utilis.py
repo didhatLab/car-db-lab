@@ -1,6 +1,6 @@
 from dataclasses import asdict, fields
 from string import Template
-from typing import Type, List
+from typing import Type, List, Union
 
 from src.base import SqlClass
 from src.tables import Car
@@ -8,9 +8,16 @@ from src.tables import Car
 sql_for_inserting_template = Template("($values)")
 
 
+def value2sql(val: Union[str, int]):
+    if isinstance(val, int):
+        return str(val)
+    if isinstance(val, str):
+        return f"'{val}'"
+
+
 def dataclass2sql(obj: SqlClass):
     kek = asdict(obj)
-    lol = [str(val) for val in kek.values()]
+    lol = [value2sql(val) for val in kek.values()]
     string_values = ", ".join(lol)
     return sql_for_inserting_template.substitute(values=string_values)
 

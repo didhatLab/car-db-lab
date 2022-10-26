@@ -18,7 +18,7 @@ CREATE TABLE Details (
     detail_name VARCHAR(100) NOT NULL,
     vendor VARCHAR(100) NOT NULL,
     cost INTEGER NOT NULL,
-    max_number INTEGER
+    max_number INTEGER NOT NULL
 );
 
 CREATE TABLE Repair (
