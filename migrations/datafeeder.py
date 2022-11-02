@@ -11,7 +11,7 @@ SIGNAL_POINT = "[end]"
 SIGNAL = True
 END_SIGNAL = False
 END_POINT = "[fullend]"
-tables_models = [Repair]
+tables_models = [Car, Garage, Details, Repair]
 
 
 def migration():
@@ -23,7 +23,7 @@ def migration():
                         point_for_signal=SIGNAL_POINT,
                         end_signal=END_SIGNAL,
                         signal=SIGNAL,
-                        data_class_for_converting=Repair)
+                        data_class_for_converting=Car)
     keeps: List[SqlClass] = []
     sql_model = tables_models[tables_model_index]
     for obj in reader.read_generator_file("data.txt"):
